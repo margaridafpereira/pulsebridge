@@ -1,0 +1,739 @@
+{
+  "@@locale": "en",
+  "appTitle": "PulseBridge",
+  "tabMonitor": "Monitor",
+  "tabRecordings": "Recordings",
+  "tabProfile": "Profile",
+  "tabSettings": "Settings",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "apply": "Apply",
+  "connect": "Connect",
+  "disconnect": "Disconnect",
+  "send": "Send",
+  "clear": "Clear",
+  "notSet": "Not set",
+  "none": "None",
+  "bpm": "bpm",
+  "percentValue": "{value} percent",
+  "@percentValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "recordingSaved": "Recording saved (encrypted) · {duration}",
+  "@recordingSaved": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "notMonitoring": "NOT MONITORING",
+  "linkReconnecting": "Device link reconnecting",
+  "linkLostBanner": "Device link lost",
+  "electrodeOff": "Electrode off",
+  "checkLeads": "Check lead placement",
+  "batteryLowTitle": "Device battery low",
+  "batteryLowText": "Charge the device soon",
+  "batteryLevel": "Device battery {percent} percent",
+  "@batteryLevel": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "connectTitle": "Connect to device",
+  "connectSubtitle": "ECG monitor over TCP (simulator). For a Bluetooth sensor, switch the device type in Settings.",
+  "host": "Host",
+  "port": "Port",
+  "linkLive": "Live",
+  "linkLinking": "Linking",
+  "linkLost": "Lost",
+  "linkOffline": "Offline",
+  "heartRateLabel": "HEART RATE",
+  "fromEcg": "· from ECG",
+  "fromSensor": "· from sensor",
+  "hrHigh": "HIGH > {limit}",
+  "@hrHigh": {
+    "placeholders": {
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "hrLow": "LOW < {limit}",
+  "@hrLow": {
+    "placeholders": {
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "heartRateSemantics": "Heart rate {bpm} beats per minute",
+  "@heartRateSemantics": {
+    "placeholders": {
+      "bpm": {
+        "type": "int"
+      }
+    }
+  },
+  "heartRateUnknown": "Heart rate unknown",
+  "statMin": "MIN",
+  "statAvg": "AVG",
+  "statMax": "MAX",
+  "last5min": "last 5 min",
+  "trendSemantics": "Heart-rate trend, from {low} to {high} beats per minute",
+  "@trendSemantics": {
+    "placeholders": {
+      "low": {
+        "type": "int"
+      },
+      "high": {
+        "type": "int"
+      }
+    }
+  },
+  "ecgLabel": "ECG",
+  "ecgScale": "Lead II · 25 mm/s · 10 mm/mV",
+  "ecgSemantics": "Live ECG trace",
+  "ecgSemanticsDimmed": "ECG trace, not live: device link lost",
+  "noEcgTitle": "Heart-rate sensor",
+  "noEcgText": "This sensor sends heart rate and beat intervals, not an ECG. Rhythm screening still works on the beat intervals.",
+  "rec": "REC {duration}",
+  "@rec": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "recSemantics": "Recording for {duration}",
+  "@recSemantics": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "rrIrregular": "Irregular RR",
+  "rrRegular": "Regular RR",
+  "prematureBeats": "{count, plural, =1{1 premature beat} other{{count} premature beats}}",
+  "@prematureBeats": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noDataLost": "No data lost",
+  "samplesLost": "{count, plural, =1{1 sample lost} other{{count} samples lost}}",
+  "@samplesLost": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "stopRecording": "Stop recording",
+  "startRecording": "Start recording",
+  "markSymptom": "Mark a symptom",
+  "markSymptomCount": "Mark a symptom · {count} logged",
+  "@markSymptomCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "symptomQuestion": "What are you feeling?",
+  "symptomHint": "It is marked on the ECG at this exact moment.",
+  "symptomMarked": "{symptom} marked on the ECG",
+  "@symptomMarked": {
+    "placeholders": {
+      "symptom": {
+        "type": "String"
+      }
+    }
+  },
+  "connectDevice": "Connect a device",
+  "symptomPalpitations": "Palpitations",
+  "symptomDizziness": "Dizziness",
+  "symptomChestPain": "Chest pain",
+  "symptomShortnessOfBreath": "Shortness of breath",
+  "symptomFatigue": "Fatigue",
+  "symptomExercise": "Exercise",
+  "bleTitle": "Bluetooth heart-rate sensor",
+  "bleSubtitle": "Chest strap, watch or any sensor with the standard Heart Rate Service. Heart rate only, no ECG.",
+  "bleLastUsed": "Last used · {address}",
+  "@bleLastUsed": {
+    "placeholders": {
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "bleNoBluetooth": "This phone has no Bluetooth LE.",
+  "blePermission": "PulseBridge needs the \"Nearby devices\" permission to find sensors.",
+  "bleOff": "Bluetooth is off. Turn it on and scan again.",
+  "bleScanFailed": "Scan failed: {error}",
+  "@bleScanFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "bleSearching": "Looking for sensors…",
+  "bleNoneFound": "No sensors found. Wear the strap (it wakes on skin contact) or, on another phone, open nRF Connect → Advertiser and add the Heart Rate service.",
+  "bleUnnamed": "Unnamed device",
+  "bleHrSensor": "Heart-rate sensor · {address}",
+  "@bleHrSensor": {
+    "placeholders": {
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "bleScanAgain": "Scan again",
+  "bleSignal": "Signal {bars} of 4",
+  "@bleSignal": {
+    "placeholders": {
+      "bars": {
+        "type": "int"
+      }
+    }
+  },
+  "recordingsError": "Could not read recordings",
+  "noRecordings": "No recordings yet",
+  "noRecordingsText": "Start a recording on the Monitor tab. Every session is stored encrypted on this device.",
+  "encryptionNote": "AES-256-GCM · key held in the Android Keystore",
+  "lock": "Lock",
+  "avgBpm": "avg bpm",
+  "bpmRange": "{low}–{high} bpm",
+  "@bpmRange": {
+    "placeholders": {
+      "low": {
+        "type": "int"
+      },
+      "high": {
+        "type": "int"
+      }
+    }
+  },
+  "prematureShort": "{count} premature",
+  "@prematureShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "alarmsCount": "{count, plural, =1{1 alarm} other{{count} alarms}}",
+  "@alarmsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lostPercent": "{amount}% lost",
+  "@lostPercent": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteTitle": "Delete recording?",
+  "deleteText": "The ECG and all data of this session are removed from the device.",
+  "openRecording": "Recording of {date}, {duration}, average {bpm} bpm",
+  "@openRecording": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      },
+      "bpm": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfReport": "PDF report",
+  "fhirExport": "FHIR export",
+  "statAverage": "Average",
+  "statMinShort": "Min",
+  "statMaxShort": "Max",
+  "statDuration": "Duration",
+  "statPremature": "Premature",
+  "statDataLost": "Data lost",
+  "sectionHeartRate": "Heart rate",
+  "hrBand": "{low}–{high} bpm band",
+  "@hrBand": {
+    "placeholders": {
+      "low": {
+        "type": "int"
+      },
+      "high": {
+        "type": "int"
+      }
+    }
+  },
+  "sectionEcgReview": "ECG review",
+  "ecgDecryptError": "Could not decrypt the ECG: {error}",
+  "@ecgDecryptError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "noEcgRecording": "No ECG in this recording: it came from a heart-rate sensor.",
+  "sectionEvents": "Events",
+  "tapToSeeEcg": "tap to see the ECG",
+  "stripRange": "{from} – {to} of {length}",
+  "@stripRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "stripSemantics": "ECG strip from {from} to {to}",
+  "@stripSemantics": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "eventRecordingStarted": "Recording started",
+  "eventRecordingStopped": "Recording stopped",
+  "eventDeviceConnected": "Device connected",
+  "eventReconnecting": "Reconnecting",
+  "eventLinkLost": "Link lost",
+  "eventLinkLostReason": "Link lost: {reason}",
+  "@eventLinkLostReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "eventElectrodeOffCleared": "Electrode back on",
+  "eventLowBattery": "Low battery",
+  "eventLowBatteryCleared": "Battery recovered",
+  "eventPremature": "Premature beat",
+  "eventHrOutside": "Heart rate {bpm} bpm outside {low}–{high}",
+  "@eventHrOutside": {
+    "placeholders": {
+      "bpm": {
+        "type": "int"
+      },
+      "low": {
+        "type": "int"
+      },
+      "high": {
+        "type": "int"
+      }
+    }
+  },
+  "reportTitle": "Report for the physician",
+  "reportPdfTitle": "ECG recording report",
+  "recordedOn": "Recorded {date}",
+  "@recordedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "disclaimer": "Portfolio project, not a medical device. Rhythm indicators are screening aids, not a diagnosis.",
+  "pageOf": "Page {page} of {total}",
+  "@pageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "patient": "Patient",
+  "recording": "Recording",
+  "name": "Name",
+  "ageSex": "Age · sex",
+  "ageBorn": "{age} years (born {year})",
+  "@ageBorn": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "noProfile": "No patient profile recorded",
+  "profileLabel": "Profile",
+  "start": "Start",
+  "device": "Device",
+  "deviceDesc": "{id} · {rate} Hz, single lead",
+  "@deviceDesc": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "alarmLimits": "Alarm limits",
+  "signalLost": "Signal lost",
+  "signalLostValue": "{amount} % ({lost} of {total} samples)",
+  "@signalLostValue": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "lost": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "averageHr": "Average HR",
+  "minHr": "Min HR",
+  "maxHr": "Max HR",
+  "prematureBeatsLabel": "Premature beats",
+  "symptomsLabel": "Symptoms",
+  "alarmsLabel": "Alarms",
+  "findingPremature": "{count, plural, =1{1 premature beat flagged (RR below 80 % of the recent median).} other{{count} premature beats flagged (RR below 80 % of the recent median).}}",
+  "@findingPremature": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "findingNoPremature": "No premature beats flagged.",
+  "findingAlarms": "{count, plural, =1{1 device or heart-rate alarm during the recording.} other{{count} device or heart-rate alarms during the recording.}}",
+  "@findingAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "findingSymptoms": "{count, plural, =1{1 symptom reported by the patient; the ECG at it is shown below.} other{{count} symptoms reported by the patient; the ECG at each one is shown below.}}",
+  "@findingSymptoms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notEnoughHr": "Not enough heart-rate readings to plot.",
+  "ecgScaleNote": "Lead II · 25 mm/s · 10 mm/mV · raw signal, baseline removed per strip. Grey bands mark lost samples.",
+  "symptomTag": "SYMPTOM",
+  "alarmTag": "ALARM",
+  "startOfRecording": "Start of recording",
+  "atTime": "at {time}",
+  "@atTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "eventLog": "Event log",
+  "time": "Time",
+  "type": "Type",
+  "event": "Event",
+  "noEvents": "No events.",
+  "kindAlarm": "Alarm",
+  "kindLink": "Link",
+  "kindSymptom": "Symptom",
+  "kindInfo": "Info",
+  "kindRhythm": "Rhythm",
+  "prematureNotListed": "{count} individual premature-beat markers are not listed.",
+  "@prematureNotListed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "fhirBuildError": "Could not build the export: {error}",
+  "@fhirBuildError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "size": "Size",
+  "fhirCodes": "Codes: LOINC (heart rate, EKG study, symptom), SNOMED CT (symptoms), ISO/IEEE 11073 MDC (ECG lead II), UCUM units.",
+  "shareFile": "Share as file",
+  "fhirSendNoServer": "Send to FHIR server (set one in Settings)",
+  "fhirSendTo": "Send to {server}",
+  "@fhirSendTo": {
+    "placeholders": {
+      "server": {
+        "type": "String"
+      }
+    }
+  },
+  "preview": "Preview",
+  "fhirSendTitle": "Send health data?",
+  "fhirSendText": "This recording and the patient profile will be sent to\n{server}",
+  "@fhirSendText": {
+    "placeholders": {
+      "server": {
+        "type": "String"
+      }
+    }
+  },
+  "fhirAccepted": "Accepted · {count} resources created",
+  "@fhirAccepted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "fhirNotSent": "Not sent: {error}",
+  "@fhirNotSent": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "fhirShareSubject": "ECG recording (FHIR)",
+  "firmwareTitle": "Device firmware",
+  "fwInstalled": "INSTALLED",
+  "fwAvailable": "AVAILABLE",
+  "fwChanges": "What changes in 1.1.0: faster lead-off detection and lower power use while streaming.",
+  "fwConnectFirst": "Connect to the ECG device on the Monitor tab.",
+  "fwStopRecording": "Stop the recording first. An update never interrupts monitoring.",
+  "fwCancel": "Cancel update",
+  "fwUpToDate": "Up to date",
+  "fwInstall": "Install {version}",
+  "@fwInstall": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "fwSending": "Sending",
+  "fwWaitingLink": "Link lost, will resume",
+  "fwVerifying": "Device is checking the image",
+  "fwRestarting": "Device is restarting",
+  "fwDone": "Updated",
+  "fwFailed": "Update failed",
+  "fwCancelled": "Cancelled",
+  "fwProgressKb": "{sentKb} of {totalKb} KB",
+  "@fwProgressKb": {
+    "placeholders": {
+      "sentKb": {
+        "type": "String"
+      },
+      "totalKb": {
+        "type": "String"
+      }
+    }
+  },
+  "fwKeptOld": "The device kept its current firmware and works as before.",
+  "fwStepSend": "Send",
+  "fwStepVerify": "Verify",
+  "fwStepRestart": "Restart",
+  "fwStepConfirm": "Confirm",
+  "fwHowTitle": "How the update stays safe",
+  "fwHow1": "Sent in 512-byte pieces; each is confirmed before the next.",
+  "fwHow2": "If the link drops, it resumes where it stopped.",
+  "fwHow3": "The device checks the whole image (size, CRC-32, header) before installing anything.",
+  "fwHow4": "A failed check leaves the current firmware running.",
+  "fwHow5": "Done only when the device restarts reporting the new version.",
+  "fwProgressSemantics": "Firmware update progress",
+  "editProfile": "Edit profile",
+  "statRecordings": "Recordings",
+  "statTimeMonitored": "Time monitored",
+  "statAverageHr": "Average HR",
+  "statSymptoms": "Symptoms logged",
+  "maxHrSuggestion": "Age-predicted maximum heart rate is {maxHr} bpm. Use it as the upper alarm limit?",
+  "@maxHrSuggestion": {
+    "placeholders": {
+      "maxHr": {
+        "type": "int"
+      }
+    }
+  },
+  "conditions": "Conditions",
+  "medication": "Medication",
+  "noneRecorded": "None recorded",
+  "physician": "Physician",
+  "emergencyContact": "Emergency contact",
+  "ageYears": "{age} years",
+  "@ageYears": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      }
+    }
+  },
+  "setupProfile": "Set up your profile",
+  "setupProfileText": "Your age personalises the heart-rate limits.",
+  "addDetails": "Add details",
+  "encryptedOnDevice": "Encrypted on device",
+  "fullName": "Full name",
+  "yearOfBirth": "Year of birth",
+  "sexLabel": "Sex",
+  "sexFemale": "Female",
+  "sexMale": "Male",
+  "sexOther": "Other",
+  "medicationHint": "e.g. Bisoprolol 2.5 mg",
+  "addItem": "Add",
+  "emergencyContactHint": "Emergency contact (name and phone)",
+  "condHypertension": "Hypertension",
+  "condAtrialFibrillation": "Atrial fibrillation",
+  "condDiabetes": "Diabetes",
+  "condHeartFailure": "Heart failure",
+  "condAsthma": "Asthma",
+  "hrLimitsTitle": "Heart-rate alarm limits",
+  "limitLow": "LOW",
+  "limitHigh": "HIGH",
+  "hrLimitsText": "The monitor turns red and logs an alarm when the heart rate leaves this band.",
+  "hrLimitsSemantics": "Heart-rate alarm limits, low {low}, high {high} beats per minute",
+  "@hrLimitsSemantics": {
+    "placeholders": {
+      "low": {
+        "type": "int"
+      },
+      "high": {
+        "type": "int"
+      }
+    }
+  },
+  "deviceTitle": "Device",
+  "ecgSimulator": "ECG simulator",
+  "bluetooth": "Bluetooth",
+  "simulatorText": "ECG, heart rate and alarms over TCP. Change host and port when connecting.",
+  "firmwareSubtitle": "Installed {installed} · available {available}",
+  "@firmwareSubtitle": {
+    "placeholders": {
+      "installed": {
+        "type": "String"
+      },
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+  "sensor": "Sensor",
+  "noneYet": "None yet",
+  "forgetSensor": "Forget this sensor",
+  "bluetoothText": "Any sensor with the standard Bluetooth Heart Rate Service: chest straps such as Polar H10, or nRF Connect on another phone. Heart rate and beat intervals, no ECG.",
+  "typeAppliesNext": "Changing the type applies to the next connection.",
+  "server": "Server",
+  "setServer": "Set server",
+  "fhirSettingsText": "Recordings can be exported as HL7 FHIR R4 (a file, or sent to this server over https). Public test servers are visible to anyone: never send real patient data there.",
+  "fhirServerTitle": "FHIR server",
+  "baseUrl": "Base URL",
+  "useHttps": "Use an https:// address",
+  "language": "Language",
+  "languageSystem": "System",
+  "privacyTitle": "Privacy",
+  "storage": "Storage",
+  "key": "Key",
+  "privacyText": "Recordings, profile and settings stay in the app's private storage. The key cannot be exported, so copied files are unreadable. Only a report or FHIR export you choose to share leaves the device.",
+  "aboutTitle": "About",
+  "version": "Version",
+  "aboutText": "PulseBridge is a portfolio project, not a medical device. Rhythm indicators are screening aids and not a diagnosis.",
+  "clinicianAccess": "Clinician access",
+  "createPinHint": "Open the Recordings tab to create the clinician PIN.",
+  "unlocked": "Unlocked",
+  "locked": "Locked",
+  "fingerprintUnlock": "Unlock with fingerprint",
+  "noFingerprint": "No fingerprint enrolled on this device",
+  "pinFallback": "The PIN still works as a fallback",
+  "unlockToChange": "Unlock the Recordings tab to change this",
+  "fingerprintNotConfirmed": "Fingerprint not confirmed",
+  "changePin": "Change PIN",
+  "lockNow": "Lock now",
+  "lockInfo": "The area also locks 30 s after the app goes to the background. Five wrong PINs pause entry, for longer each time.",
+  "lockError": "Could not read the lock: {error}",
+  "@lockError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "lockedTitle": "Clinical area locked",
+  "lockedSubtitle": "Recordings contain health data. Enter the clinician PIN.",
+  "fingerprintFailed": "Fingerprint not recognised. Use the PIN.",
+  "wrongPinAttempts": "{count, plural, =1{Wrong PIN · 1 attempt before a pause} other{Wrong PIN · {count} attempts before a pause}}",
+  "@wrongPinAttempts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tooManyPins": "Too many wrong PINs",
+  "tryAgainIn": "Too many wrong PINs. Try again in {time}",
+  "@tryAgainIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "protectTitle": "Protect the clinical area",
+  "protectSubtitle": "Choose a 6-digit PIN. It will be needed to open recordings and export reports.",
+  "confirmPin": "Confirm the PIN",
+  "confirmPinSubtitle": "Enter the same 6 digits again.",
+  "pinMismatch": "The PINs didn't match. Start again.",
+  "currentPin": "Current PIN",
+  "newPin": "New PIN",
+  "confirmNewPin": "Confirm new PIN",
+  "currentPinSubtitle": "Enter the PIN in use now.",
+  "newPinSubtitle": "Choose 6 new digits.",
+  "confirmNewPinSubtitle": "Enter the new PIN again.",
+  "wrongPin": "Wrong PIN",
+  "newPinMismatch": "The PINs didn't match. Choose the new PIN again.",
+  "pinChanged": "PIN changed",
+  "useFingerprint": "Use fingerprint",
+  "deleteDigit": "Delete",
+  "pinDigits": "{count} of 6 digits entered",
+  "@pinDigits": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "biometricReason": "Unlock the clinical area",
+  "biometricEnableReason": "Confirm to enable fingerprint unlock"
+}

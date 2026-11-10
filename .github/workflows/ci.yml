@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  simulator:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: simulator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pulsebridge_sim.mitbih 119
+      - run: python -m unittest discover -s tests -v
+
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: MIT-BIH records for the QRS validation
+        working-directory: simulator
+        run: python -m pulsebridge_sim.mitbih 100 119 201
+
+      - name: Plugin (Dart)
+        working-directory: device_link
+        run: |
+          flutter pub get
+          flutter analyze lib test
+          flutter test
+
+      - name: App (Dart)
+        working-directory: app
+        run: |
+          flutter pub get
+          flutter analyze
+          flutter test
+
+      - name: Plugin (Kotlin)
+        working-directory: app/android
+        run: ./gradlew :device_link:testDebugUnitTest --console=plain
+
+      - name: Build APK
+        working-directory: app
+        run: flutter build apk --debug
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pulsebridge-debug-apk
+          path: app/build/app/outputs/flutter-apk/app-debug.apk
