@@ -233,7 +233,7 @@
       }
     }
   },
-  "alarmsCount": "{count, plural, =1{1 alarm} other{{count} alarms}}",
+  "alarmsCount": "{count, plural, =0{{count} alarms} =1{1 alarm} other{{count} alarms}}",
   "@alarmsCount": {
     "placeholders": {
       "count": {
@@ -682,6 +682,18 @@
   "changePin": "Change PIN",
   "lockNow": "Lock now",
   "lockInfo": "The area also locks 30 s after the app goes to the background. Five wrong PINs pause entry, for longer each time.",
+  "demoDevice": "Demo device",
+  "demoText": "Runs inside the browser and plays real ECG from MIT-BIH record 119 (a patient with ventricular bigeminy).",
+  "demoControls": "Try the safety features",
+  "demoControlsText": "Make the demo device fail on purpose and watch how the app reacts.",
+  "demoDropLink": "Drop the link",
+  "demoElectrodeOff": "Electrode off",
+  "demoNeedsConnection": "Connect on the Monitor tab first.",
+  "webDemoNote": "Web demo: simulated device, real ECG. The Android app talks to real hardware.",
+  "webPrivacyText": "In this web demo, data stays in this browser (localStorage) and is not encrypted with a hardware key. Only simulated recordings live here. The Android app encrypts everything with AES-256-GCM and a key held in the Android Keystore.",
+  "bleChoose": "Choose a sensor",
+  "bleWebHint": "The browser will list nearby heart-rate sensors (Chrome or Edge, on a computer or Android).",
+  "bleWebUnsupported": "This browser has no Web Bluetooth. Open the demo in Chrome or Edge.",
   "lockError": "Could not read the lock: {error}",
   "@lockError": {
     "placeholders": {

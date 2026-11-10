@@ -1,20 +1,39 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:device_link/device_link.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:intl/intl.dart';
 
 import 'clinical/clinical_gate.dart';
 import 'clinical/clinical_lock.dart';
 import 'l10n/l10n.dart';
-import 'monitor/monitor_controller.dart' show clockProvider;
+import 'monitor/monitor_controller.dart' show clockProvider, demoDeviceProvider, deviceLinkProvider;
 import 'monitor/monitor_screen.dart';
 import 'profile/profile_screen.dart';
 import 'sessions/sessions_screen.dart';
 import 'settings/settings.dart';
 import 'settings/settings_screen.dart';
 import 'theme.dart';
+import 'web/browser_store.dart';
+import 'web/demo_device.dart';
 
 void main() {
-  runApp(const ProviderScope(child: PulseBridgeApp()));
+  runApp(ProviderScope(overrides: kIsWeb ? webOverrides() : const [], child: const PulseBridgeApp()));
+}
+
+/// In the browser there is no Kotlin side: the ECG device is simulated in the
+/// app, and data lives in localStorage.
+List<Override> webOverrides() {
+  final demo = DemoDeviceLink(
+    () async => DemoRecording.parse(await rootBundle.load('assets/demo/mitbih119.bin')),
+  );
+  return [
+    demoDeviceProvider.overrideWithValue(demo),
+    deviceLinkProvider.overrideWithValue(DeviceLink(demo)),
+    blobStoreProvider.overrideWithValue(browserStore()),
+  ];
 }
 
 class PulseBridgeApp extends ConsumerWidget {

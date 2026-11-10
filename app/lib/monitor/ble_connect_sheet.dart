@@ -37,6 +37,18 @@ class _BleConnectSheetState extends ConsumerState<_BleConnectSheet> {
   }
 
   Future<void> _scan() async {
+    if (ref.read(demoDeviceProvider) != null) {
+      // Web Bluetooth: the browser lists the sensors itself.
+      final bt = await ref.read(deviceLinkProvider).bluetoothState();
+      if (mounted) {
+        setState(() {
+          _scanning = false;
+          _found = const [];
+          _problem = bt.supported ? null : context.l10n.bleWebUnsupported;
+        });
+      }
+      return;
+    }
     final link = ref.read(deviceLinkProvider);
     final l = context.l10n;
     setState(() {
@@ -79,6 +91,8 @@ class _BleConnectSheetState extends ConsumerState<_BleConnectSheet> {
     final settings = ref.watch(settingsProvider).value ?? const AppSettings();
     final last = settings.bleAddress;
     final found = _found ?? const <BleDevice>[];
+    final web = ref.watch(demoDeviceProvider) != null;
+    if (web) return _webPicker(l);
 
     return SafeArea(
       child: ConstrainedBox(
@@ -151,6 +165,38 @@ class _BleConnectSheetState extends ConsumerState<_BleConnectSheet> {
       ),
     );
   }
+}
+
+extension on _BleConnectSheetState {
+  Widget _webPicker(AppLocalizations l) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            const Icon(Icons.bluetooth_searching, size: 40, color: AppColors.info),
+            const SizedBox(height: 12),
+            Text(l.bleTitle,
+                textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+            const SizedBox(height: 4),
+            Text(l.bleSubtitle, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary)),
+            const SizedBox(height: 16),
+            Text(_problem ?? l.bleWebHint,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: _problem != null ? AppColors.warning : AppColors.textSecondary)),
+            const SizedBox(height: 16),
+            FilledButton.icon(
+              icon: const Icon(Icons.bluetooth),
+              label: Text(l.bleChoose),
+              // Straight from the tap: the browser only opens its picker on a user gesture.
+              onPressed: _scanning || _problem != null
+                  ? null
+                  : () {
+                      ref.read(monitorProvider.notifier).connectBle('web');
+                      Navigator.pop(context, true);
+                    },
+            ),
+          ]),
+        ),
+      );
 }
 
 class _DeviceTile extends StatelessWidget {

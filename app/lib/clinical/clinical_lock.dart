@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'dart:isolate';
 import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
+import 'package:flutter/foundation.dart' show compute;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_auth/local_auth.dart';
 
@@ -245,7 +245,10 @@ class ClinicalLockController extends AsyncNotifier<ClinicalLockState> {
   Future<void> _persist() =>
       ref.read(blobStoreProvider).write(file, Uint8List.fromList(utf8.encode(jsonEncode(_record))));
 
-  /// Off the UI thread: 120 000 iterations take a noticeable moment.
+  /// Off the UI thread on mobile: 120 000 iterations take a noticeable
+  /// moment. (On the web, compute runs it in place.)
   static Future<Uint8List> _derive(String pin, List<int> salt, int iterations) =>
-      Isolate.run(() => pbkdf2Sha256(utf8.encode(pin), salt, iterations));
+      compute(_deriveArgs, (pin, salt, iterations));
+
+  static Uint8List _deriveArgs((String, List<int>, int) a) => pbkdf2Sha256(utf8.encode(a.$1), a.$2, a.$3);
 }

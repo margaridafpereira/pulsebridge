@@ -64,6 +64,16 @@ class MonitorScreen extends ConsumerWidget {
               _RecordButton(state: state, onPressed: controller.toggleStreaming),
             ] else if (!state.sessionActive)
               _ConnectHint(onConnect: () => _connect(context, ref)),
+            if (ref.watch(demoDeviceProvider) != null) ...[
+              const SizedBox(height: 14),
+              Row(children: [
+                const Icon(Icons.public, size: 16, color: AppColors.info),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(l.webDemoNote, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                ),
+              ]),
+            ],
           ],
         ),
       ),
@@ -94,6 +104,10 @@ class MonitorScreen extends ConsumerWidget {
     final settings = ref.read(settingsProvider).value ?? const AppSettings();
     if (settings.connection == DeviceConnectionKind.bluetooth) {
       await showBleConnectSheet(context);
+      return;
+    }
+    if (ref.read(demoDeviceProvider) != null) {
+      await ref.read(monitorProvider.notifier).connect('demo', 0);
       return;
     }
     final host = TextEditingController(text: settings.host);

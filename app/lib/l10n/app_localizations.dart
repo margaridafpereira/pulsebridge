@@ -665,7 +665,7 @@ abstract class AppLocalizations {
   /// No description provided for @alarmsCount.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 alarm} other{{count} alarms}}'**
+  /// **'{count, plural, =0{{count} alarms} =1{1 alarm} other{{count} alarms}}'**
   String alarmsCount(int count);
 
   /// No description provided for @lostPercent.
@@ -1807,6 +1807,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The area also locks 30 s after the app goes to the background. Five wrong PINs pause entry, for longer each time.'**
   String get lockInfo;
+
+  /// No description provided for @demoDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo device'**
+  String get demoDevice;
+
+  /// No description provided for @demoText.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs inside the browser and plays real ECG from MIT-BIH record 119 (a patient with ventricular bigeminy).'**
+  String get demoText;
+
+  /// No description provided for @demoControls.
+  ///
+  /// In en, this message translates to:
+  /// **'Try the safety features'**
+  String get demoControls;
+
+  /// No description provided for @demoControlsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Make the demo device fail on purpose and watch how the app reacts.'**
+  String get demoControlsText;
+
+  /// No description provided for @demoDropLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop the link'**
+  String get demoDropLink;
+
+  /// No description provided for @demoElectrodeOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrode off'**
+  String get demoElectrodeOff;
+
+  /// No description provided for @demoNeedsConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect on the Monitor tab first.'**
+  String get demoNeedsConnection;
+
+  /// No description provided for @webDemoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Web demo: simulated device, real ECG. The Android app talks to real hardware.'**
+  String get webDemoNote;
+
+  /// No description provided for @webPrivacyText.
+  ///
+  /// In en, this message translates to:
+  /// **'In this web demo, data stays in this browser (localStorage) and is not encrypted with a hardware key. Only simulated recordings live here. The Android app encrypts everything with AES-256-GCM and a key held in the Android Keystore.'**
+  String get webPrivacyText;
+
+  /// No description provided for @bleChoose.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a sensor'**
+  String get bleChoose;
+
+  /// No description provided for @bleWebHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The browser will list nearby heart-rate sensors (Chrome or Edge, on a computer or Android).'**
+  String get bleWebHint;
+
+  /// No description provided for @bleWebUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'This browser has no Web Bluetooth. Open the demo in Chrome or Edge.'**
+  String get bleWebUnsupported;
 
   /// No description provided for @lockError.
   ///

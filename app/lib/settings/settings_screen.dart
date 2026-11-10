@@ -5,7 +5,10 @@ import '../clinical/clinical_gate.dart';
 import '../clinical/clinical_lock.dart';
 import '../firmware/firmware_screen.dart';
 import '../l10n/l10n.dart';
+import 'package:device_link/device_link.dart' show LinkState;
+
 import '../monitor/monitor_controller.dart';
+import '../web/demo_device.dart';
 import '../theme.dart';
 import 'settings.dart';
 
@@ -17,6 +20,7 @@ class SettingsScreen extends ConsumerWidget {
     final l = context.l10n;
     final settings = ref.watch(settingsProvider).value ?? const AppSettings();
     final controller = ref.read(settingsProvider.notifier);
+    final demo = ref.watch(demoDeviceProvider);
     const note = TextStyle(color: AppColors.textSecondary, fontSize: 13);
 
     return Scaffold(
@@ -59,7 +63,8 @@ class SettingsScreen extends ConsumerWidget {
               // Chips rather than a segmented button: they wrap with large text.
               Wrap(spacing: 8, runSpacing: 8, children: [
                 for (final (kind, icon, label) in [
-                  (DeviceConnectionKind.simulator, Icons.lan_outlined, l.ecgSimulator),
+                  (DeviceConnectionKind.simulator, demo != null ? Icons.public : Icons.lan_outlined,
+                      demo != null ? l.demoDevice : l.ecgSimulator),
                   (DeviceConnectionKind.bluetooth, Icons.bluetooth, l.bluetooth),
                 ])
                   ChoiceChip(
@@ -70,9 +75,13 @@ class SettingsScreen extends ConsumerWidget {
                   ),
               ]),
               if (settings.connection == DeviceConnectionKind.simulator) ...[
-                _Row(label: l.host, value: settings.host),
-                _Row(label: l.port, value: '${settings.port}'),
-                Text(l.simulatorText, style: note),
+                if (demo != null)
+                  Text(l.demoText, style: note)
+                else ...[
+                  _Row(label: l.host, value: settings.host),
+                  _Row(label: l.port, value: '${settings.port}'),
+                  Text(l.simulatorText, style: note),
+                ],
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: const Icon(Icons.memory),
@@ -103,6 +112,10 @@ class SettingsScreen extends ConsumerWidget {
               Text(l.typeAppliesNext, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
             ],
           ),
+          if (demo != null) ...[
+            const SizedBox(height: 12),
+            _DemoControls(demo: demo),
+          ],
           const SizedBox(height: 12),
           _Group(
             icon: Icons.translate,
@@ -146,9 +159,13 @@ class SettingsScreen extends ConsumerWidget {
             icon: Icons.lock,
             title: l.privacyTitle,
             children: [
-              _Row(label: l.storage, value: 'AES-256-GCM'),
-              _Row(label: l.key, value: 'Android Keystore'),
-              Text(l.privacyText, style: note),
+              if (demo != null)
+                Text(l.webPrivacyText, style: note)
+              else ...[
+                _Row(label: l.storage, value: 'AES-256-GCM'),
+                _Row(label: l.key, value: 'Android Keystore'),
+                Text(l.privacyText, style: note),
+              ],
             ],
           ),
           const SizedBox(height: 12),
@@ -261,6 +278,39 @@ class _ClinicianAccess extends ConsumerWidget {
           ),
         ]),
         Text(l.lockInfo, style: note),
+      ],
+    );
+  }
+}
+
+class _DemoControls extends ConsumerWidget {
+  const _DemoControls({required this.demo});
+  final DemoDeviceLink demo;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = context.l10n;
+    final live = ref.watch(monitorProvider.select((s) => s.link == LinkState.connected && !s.heartRateOnly));
+    return _Group(
+      icon: Icons.science_outlined,
+      title: l.demoControls,
+      children: [
+        Text(l.demoControlsText, style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+        Wrap(spacing: 12, runSpacing: 8, children: [
+          OutlinedButton.icon(
+            icon: const Icon(Icons.link_off, size: 18),
+            label: Text(l.demoDropLink),
+            onPressed: live
+                ? () => demo.dropLink(const Duration(seconds: 5))
+                : null,
+          ),
+          OutlinedButton.icon(
+            icon: const Icon(Icons.sensors_off, size: 18),
+            label: Text(l.demoElectrodeOff),
+            onPressed: live ? () => demo.electrodeOff(const Duration(seconds: 6)) : null,
+          ),
+        ]),
+        if (!live) Text(l.demoNeedsConnection, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
       ],
     );
   }

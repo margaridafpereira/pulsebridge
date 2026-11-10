@@ -205,6 +205,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count batimentos prematuros',
       one: '1 batimento prematuro',
+      zero: '$count batimentos prematuros',
     );
     return '$_temp0';
   }
@@ -219,6 +220,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count amostras perdidas',
       one: '1 amostra perdida',
+      zero: '$count amostras perdidas',
     );
     return '$_temp0';
   }
@@ -356,6 +358,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count alarmes',
       one: '1 alarme',
+      zero: '$count alarmes',
     );
     return '$_temp0';
   }
@@ -565,6 +568,8 @@ class AppLocalizationsPt extends AppLocalizations {
       other:
           '$count batimentos prematuros assinalados (RR abaixo de 80 % da mediana recente).',
       one: '1 batimento prematuro assinalado (RR abaixo de 80 % da mediana recente).',
+      zero:
+          '$count batimentos prematuros assinalados (RR abaixo de 80 % da mediana recente).',
     );
     return '$_temp0';
   }
@@ -580,6 +585,8 @@ class AppLocalizationsPt extends AppLocalizations {
       other:
           '$count alarmes do aparelho ou do ritmo cardíaco durante a gravação.',
       one: '1 alarme do aparelho ou do ritmo cardíaco durante a gravação.',
+      zero:
+          '$count alarmes do aparelho ou do ritmo cardíaco durante a gravação.',
     );
     return '$_temp0';
   }
@@ -592,6 +599,8 @@ class AppLocalizationsPt extends AppLocalizations {
       other:
           '$count sintomas referidos pelo doente; o ECG em cada um está abaixo.',
       one: '1 sintoma referido pelo doente; o ECG nesse momento está abaixo.',
+      zero:
+          '$count sintomas referidos pelo doente; o ECG em cada um está abaixo.',
     );
     return '$_temp0';
   }
@@ -1035,6 +1044,48 @@ class AppLocalizationsPt extends AppLocalizations {
       'A área também bloqueia 30 s depois de a app ir para segundo plano. Cinco PINs errados suspendem a entrada, cada vez por mais tempo.';
 
   @override
+  String get demoDevice => 'Aparelho de demonstração';
+
+  @override
+  String get demoText =>
+      'Corre dentro do browser e reproduz ECG real do registo 119 do MIT-BIH (um doente com bigeminismo ventricular).';
+
+  @override
+  String get demoControls => 'Experimente as funções de segurança';
+
+  @override
+  String get demoControlsText =>
+      'Faça o aparelho de demonstração falhar de propósito e veja como a app reage.';
+
+  @override
+  String get demoDropLink => 'Cortar a ligação';
+
+  @override
+  String get demoElectrodeOff => 'Soltar elétrodo';
+
+  @override
+  String get demoNeedsConnection => 'Ligue primeiro no separador Monitor.';
+
+  @override
+  String get webDemoNote =>
+      'Demo web: aparelho simulado, ECG real. A app Android liga-se a hardware real.';
+
+  @override
+  String get webPrivacyText =>
+      'Nesta demo web, os dados ficam neste browser (localStorage) e não são encriptados com uma chave de hardware. Aqui só existem gravações simuladas. A app Android encripta tudo com AES-256-GCM e uma chave guardada no Android Keystore.';
+
+  @override
+  String get bleChoose => 'Escolher sensor';
+
+  @override
+  String get bleWebHint =>
+      'O browser vai mostrar os sensores de ritmo cardíaco próximos (Chrome ou Edge, no computador ou Android).';
+
+  @override
+  String get bleWebUnsupported =>
+      'Este browser não tem Web Bluetooth. Abra a demo no Chrome ou no Edge.';
+
+  @override
   String lockError(String error) {
     return 'Não foi possível ler o bloqueio: $error';
   }
@@ -1057,6 +1108,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: 'PIN errado · $count tentativas antes de uma pausa',
       one: 'PIN errado · 1 tentativa antes de uma pausa',
+      zero: 'PIN errado · $count tentativas antes de uma pausa',
     );
     return '$_temp0';
   }

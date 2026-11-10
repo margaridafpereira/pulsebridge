@@ -90,6 +90,9 @@ void main() {
       expect(en.prematureBeats(1), '1 premature beat');
       expect(en.prematureBeats(3), '3 premature beats');
       expect(pt.prematureBeats(1), '1 batimento prematuro');
+      // intl puts 0 in Portuguese's "one" group: zero must still read as plural.
+      expect(pt.prematureBeats(0), '0 batimentos prematuros');
+      expect(pt.alarmsCount(0), '0 alarmes');
       expect(pt.wrongPinAttempts(4), 'PIN errado · 4 tentativas antes de uma pausa');
     });
 

@@ -6,6 +6,9 @@ No hardware needed: a **Python device simulator** streams ECG over a binary prot
 
 > Portfolio project. Not a medical device, not for clinical use.
 
+**▶ Try it in your browser: [margaridafpereira.github.io/pulsebridge](https://margaridafpereira.github.io/pulsebridge/)**
+No install: the web version simulates the ECG device inside the page and plays real MIT-BIH ECG. Settings → *Try the safety features* drops the link or pulls an electrode off on demand. In Chrome or Edge it also connects to a real Bluetooth heart-rate strap.
+
 | Live monitor | Symptom diary | Link lost |
 |---|---|---|
 | ![Live monitor](docs/images/monitoring.png) | ![Symptom diary](docs/images/symptom-diary.png) | ![Link lost](docs/images/link-lost.png) |
@@ -56,6 +59,19 @@ Screenshots use real ECG from MIT-BIH record 119 (a patient with ventricular big
 - English and Portuguese (follows the phone, or pick in Settings), PDF included.
 - TalkBack labels, alarms read out as they appear, works with text at 200 %, respects "reduce motion".
 
+## Web vs Android
+
+The same Flutter code runs in both. What changes is what sits underneath:
+
+| | Android | Web demo |
+|---|---|---|
+| ECG device | Python simulator over TCP (or real hardware) | Simulated inside the page, same behaviour |
+| Bluetooth sensors | Native Kotlin (GATT) | Web Bluetooth (Chrome, Edge; not iPhone) |
+| Background recording | Foreground service | Only while the tab is open |
+| Storage | AES-256-GCM, key in the Android Keystore | Browser localStorage, not hardware-encrypted (only simulated data) |
+| Fingerprint | Yes | No, PIN only |
+| Firmware update | Real protocol against the simulator | Same screens, simulated timing |
+
 ## Where the data lives
 
 Only on the phone, in the app's private folder (`/data/data/pt.margaridapereira.pulsebridge/files/secure/`):
@@ -96,7 +112,7 @@ More in [docs/architecture.md](docs/architecture.md).
 |---|---|---|
 | Simulator (Python) | 41 | protocol, ECG, device behaviour, MIT-BIH reader, bootloader |
 | Plugin (Kotlin, JUnit) | 44 | decoder against the simulator's frames, sessions, Bluetooth, firmware updater, encryption |
-| Plugin + app (Dart) | 64 | UI, lock, PDF, FHIR, QRS validation on MIT-BIH, Portuguese, accessibility, large text |
+| Plugin + app (Dart) | 70 | UI, lock, PDF, FHIR, QRS validation on MIT-BIH, Portuguese, accessibility, large text, web demo device |
 
 ```bash
 cd simulator && python -m unittest discover -s tests            # Python

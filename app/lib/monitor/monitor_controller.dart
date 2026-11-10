@@ -10,6 +10,7 @@ import '../sessions/sessions_provider.dart';
 import '../settings/settings.dart';
 import 'ecg_buffer.dart';
 import 'qrs_detector.dart';
+import '../web/demo_device.dart';
 import 'rhythm.dart';
 
 /// Heart-rate limits outside which the app raises an alert (SRS-011).
@@ -143,6 +144,9 @@ class MonitorState {
 }
 
 final deviceLinkProvider = Provider<DeviceLink>((ref) => DeviceLink());
+
+/// The in-app simulated device of the web demo; null on Android.
+final demoDeviceProvider = Provider<DemoDeviceLink?>((ref) => null);
 
 final clockProvider = Provider<DateTime Function()>((ref) => DateTime.now);
 

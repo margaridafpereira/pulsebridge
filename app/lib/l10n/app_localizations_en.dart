@@ -354,6 +354,7 @@ class AppLocalizationsEn extends AppLocalizations {
       locale: localeName,
       other: '$count alarms',
       one: '1 alarm',
+      zero: '$count alarms',
     );
     return '$_temp0';
   }
@@ -1025,6 +1026,48 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get lockInfo =>
       'The area also locks 30 s after the app goes to the background. Five wrong PINs pause entry, for longer each time.';
+
+  @override
+  String get demoDevice => 'Demo device';
+
+  @override
+  String get demoText =>
+      'Runs inside the browser and plays real ECG from MIT-BIH record 119 (a patient with ventricular bigeminy).';
+
+  @override
+  String get demoControls => 'Try the safety features';
+
+  @override
+  String get demoControlsText =>
+      'Make the demo device fail on purpose and watch how the app reacts.';
+
+  @override
+  String get demoDropLink => 'Drop the link';
+
+  @override
+  String get demoElectrodeOff => 'Electrode off';
+
+  @override
+  String get demoNeedsConnection => 'Connect on the Monitor tab first.';
+
+  @override
+  String get webDemoNote =>
+      'Web demo: simulated device, real ECG. The Android app talks to real hardware.';
+
+  @override
+  String get webPrivacyText =>
+      'In this web demo, data stays in this browser (localStorage) and is not encrypted with a hardware key. Only simulated recordings live here. The Android app encrypts everything with AES-256-GCM and a key held in the Android Keystore.';
+
+  @override
+  String get bleChoose => 'Choose a sensor';
+
+  @override
+  String get bleWebHint =>
+      'The browser will list nearby heart-rate sensors (Chrome or Edge, on a computer or Android).';
+
+  @override
+  String get bleWebUnsupported =>
+      'This browser has no Web Bluetooth. Open the demo in Chrome or Edge.';
 
   @override
   String lockError(String error) {

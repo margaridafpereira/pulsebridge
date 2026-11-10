@@ -42,6 +42,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  web: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
   plugin_platform_interface: ^2.1.8
+  fake_async: ^1.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -73,6 +75,8 @@ flutter:
     - assets/fonts/roboto-bold.ttf
     # Firmware the app can install on the ECG device (built by the simulator).
     - assets/firmware/pulsebridge-1.1.0.bin
+    # Five minutes of MIT-BIH record 119 for the web demo's simulated device.
+    - assets/demo/mitbih119.bin
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
